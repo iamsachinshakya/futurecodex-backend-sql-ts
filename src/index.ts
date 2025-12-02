@@ -1,7 +1,8 @@
 // src/index.ts
 import app from "./app/app";
 import { env } from "./app/config/env";
-import { connectDB } from "./app/db/mongodb/connectDB";
+import { connectDB } from "./app/db/posgres/connectDB";
+// import { connectDB } from "./app/db/mongodb/connectDB";
 import logger from "./app/utils/logger";
 
 /**
