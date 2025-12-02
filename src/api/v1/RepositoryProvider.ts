@@ -4,18 +4,19 @@ import { ICategoryRepository } from "./modules/category/repositories/category.re
 import { MongoCategoryRepository } from "./modules/category/repositories/MongoCategory.repository";
 import { ICommentRepository } from "./modules/comments/repositories/comment.repository.interface";
 import { CommentRepository } from "./modules/comments/repositories/MongoComment.repository";
-import { MongoUserRepository } from "./modules/users/repositories/mongoUser.repository";
+import { UserPostgresRepository } from "./modules/users/repositories/postgresUser.repository";
 import { IUserRepository } from "./modules/users/repositories/user.repository.interface";
 
 export class RepositoryProvider {
-    private static _userRepositoryInstance: MongoUserRepository;
+    // private static _userRepositoryInstance: MongoUserRepository;
+    private static _userRepositoryInstance: UserPostgresRepository;
     private static _categoryRepositoryInstance: MongoCategoryRepository;
     private static _blogRepositoryInstance: MongoBlogRepository;
     private static _commentRepositoryInstance: CommentRepository;
 
     static get userRepository(): IUserRepository {
         if (!this._userRepositoryInstance)
-            this._userRepositoryInstance = new MongoUserRepository();
+            this._userRepositoryInstance = new UserPostgresRepository();
         return this._userRepositoryInstance;
     }
 

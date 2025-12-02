@@ -23,6 +23,8 @@ export class AuthService implements IAuthService {
     const isUsernameExist =
       await RepositoryProvider.userRepository.findByUsername(username);
 
+    console.log("Checking if username exists:", isUsernameExist);
+
     if (isUsernameExist) {
       throw new ApiError(
         "Username already exists",
@@ -52,12 +54,21 @@ export class AuthService implements IAuthService {
       );
     }
 
-    return await RepositoryProvider.userRepository.create({
+    const registeredUser = await RepositoryProvider.userRepository.create({
       fullName,
       email,
       username: username.toLowerCase(),
       password: hashedPassword,
     });
+
+    if (!registeredUser) {
+      throw new ApiError(
+        "User registration failed",
+        500,
+        ErrorCode.USER_REGISTRATION_FAILED
+      );
+    }
+    return registeredUser;
   }
 
 

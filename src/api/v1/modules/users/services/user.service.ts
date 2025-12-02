@@ -2,22 +2,18 @@ import { ApiError } from "../../../common/utils/apiError";
 import { uploadOnCloudinary } from "../../../common/utils/cloudinary.util";
 import { RepositoryProvider } from "../../../RepositoryProvider";
 import {
-  IUpdateUserData,
   IUserEntity,
   IUserPreferences,
   ISocialLinks,
-  ICreateUserData,
-  IUsersQueryParams,
 } from "../models/user.entity";
 import { IUserService } from "./user.service.interface";
 import { ErrorCode } from "../../../common/constants/errorCodes";
 import { hashPassword } from "../../auth/utils/bcrypt.util";
 import { UserPaginatedData } from "../../../common/models/pagination";
 import { PAGINATION_PAGE_LIMIT } from "../../../common/constants/constants";
+import { ICreateUserData, IUpdateUserData, IUsersQueryParams } from "../models/user.dto";
 
 export class UserService implements IUserService {
-
-
   async createUser(data: ICreateUserData): Promise<IUserEntity | null> {
     const hashedPassword = await hashPassword(data.password);
     if (!hashedPassword) {

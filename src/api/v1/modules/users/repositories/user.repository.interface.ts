@@ -3,7 +3,7 @@ import { IUserEntity } from "../models/user.entity";
 import { IRegisterData, IUpdateUserData } from "../models/user.dto";
 
 export interface IUserRepository {
-  create(data: IRegisterData): Promise<IUserEntity>;
+  create(data: IRegisterData): Promise<IUserEntity | null>;
   findById(id: string, isRequiredSensitiveData?: boolean): Promise<IUserEntity | null>;
   findByEmail(email: string, isRequiredSensitiveData?: boolean): Promise<IUserEntity | null>;
   findByUsername(username: string): Promise<IUserEntity | null>;

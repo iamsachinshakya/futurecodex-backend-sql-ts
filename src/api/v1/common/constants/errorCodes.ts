@@ -23,4 +23,5 @@ export enum ErrorCode {
     PERMISSION_DENIED = "PERMISSION_DENIED",          //  permission not allowed 
     INVALID_ROLE = "INVALID_ROLE",                     // invalid role
     USER_INACTIVE = "USER_INACTIVE",
+    USER_REGISTRATION_FAILED = "USER_REGISTRATION_FAILED",
 }

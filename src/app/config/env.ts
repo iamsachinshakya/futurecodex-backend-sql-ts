@@ -13,9 +13,8 @@ const envSchema = z.object({
 
     // Database
     MONGODB_URI: z.string(),
-    DB_NAME: z.string().optional(),
-
     POSTGRES_URI: z.string(),
+    DB_NAME: z.string().optional(),
     // JWT
     ACCESS_TOKEN_SECRET: z.string().min(8, "ACCESS_TOKEN_SECRET must be at least 8 characters"),
     ACCESS_TOKEN_EXPIRY: z.string(),

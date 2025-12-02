@@ -13,6 +13,7 @@ export class AuthController implements IAuthController {
   ----------------------------------------------------------*/
   async register(req: Request, res: Response): Promise<Response> {
     const user = await ServiceProvider.authService.registerUser(req.body);
+    console.log("Registered user:", user);
 
     return ApiResponse.success(res, "User registered successfully", user, 201);
   }
